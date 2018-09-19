@@ -35,16 +35,17 @@ size_of_each_image = x_train.shape[1] * x_train.shape[2]
 # Each image is 28 x 28 we will flatten in into a single 784 vector
 x_train = x_train.reshape((no_training_images, size_of_each_image))
 
+no_training_images = x_test.shape[0]
+size_of_each_image = x_test.shape[1] * x_test.shape[2]
+x_test = x_test.reshape((no_training_images, size_of_each_image))
+
 y_train = tf.keras.utils.to_categorical(y_train, 10)
 
 # Now we can train out model
 model.fit(x_train, y_train, epochs=50, verbose=1)
 
 # Now we want to test out our neural net
-# Each image is 28 x 28 we will flatten in into a single 784 vector
-no_training_images = x_test.shape[0]
-size_of_each_image = x_test.shape[1] * x_test.shape[2]
-x_test = x_test.reshape((no_training_images, size_of_each_image))
+# Each test imagealready 784 so no flattenning required
 
 y_test = tf.keras.utils.to_categorical(y_test, 10)
 score = model.evaluate(x_test, y_test, batch_size=128)
