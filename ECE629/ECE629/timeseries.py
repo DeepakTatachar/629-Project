@@ -28,7 +28,7 @@ class timeseries(object):
 
       dataset_metadata = reader_dic[dataset_name]
       reader = rdr(dataset_metadata)
-      self.dataset = reader.read()
+      [self.dataset, self.lables] = reader.read()
 
    def getGASF(self):
       gasf = GASF(self.image_size)

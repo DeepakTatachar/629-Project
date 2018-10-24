@@ -2,7 +2,7 @@
   "50words": {
     "path": "./datasets/50words/",
     "type": "txt",
-    "test_filename": "FiftyWords_TRAIN.txt",
-    "train_filename": "FiftyWords_TEST.txt"
+    "test_filename": "FiftyWords_TEST.txt",
+    "train_filename": "FiftyWords_TRAIN.txt"
   }
 }

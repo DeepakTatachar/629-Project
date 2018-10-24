@@ -1,5 +1,6 @@
 import numpy as np
 from enum import Enum
+import numpy as np
 
 class DataType(Enum):
    txt = 1
@@ -25,11 +26,16 @@ class reader(object):
    def __read_txt(self):
       file = open(self.path + self.filename,"r") 
       data_as_string = file.readlines()
-      data = []
+      dataset = []
       for line in data_as_string:
-         data.append([float(i) for i in line.split()])
+         line_data = [float(i) for i in line.split()];
+         dataset.append(line_data)
 
-      return data
+      dataset = np.array(dataset)
+      # This is specific to 50words
+      data = dataset[:, 1:]
+      labels = dataset[:, 0, np.newaxis]
+      return (data, labels)
 
 
 
