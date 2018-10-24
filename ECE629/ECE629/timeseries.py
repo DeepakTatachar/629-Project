@@ -8,6 +8,9 @@ class timeseries(object):
    # Stores the entire dataset or size that fits in memory
    dataset = np.empty((1, 1))
    lables = np.empty((1, 1))
+   gasf_data = np.empty((1, 1))
+   mtf_data = np.empty((1, 1))
+   no_classes = 0
 
    # The GASF and MTF images are of size 128
    image_size = -1
@@ -29,14 +32,15 @@ class timeseries(object):
       dataset_metadata = reader_dic[dataset_name]
       reader = rdr(dataset_metadata)
       [self.dataset, self.lables] = reader.read()
+      self.no_classes = int(dataset_metadata['no_classes'])
 
-   def getGASF(self):
+   def convert_to_GASF(self):
       gasf = GASF(self.image_size)
-      return gasf.fit_transform(self.dataset)
+      self.gasf_data = gasf.fit_transform(self.dataset)
 
-   def getMTF(self):
+   def convert_to_MTF(self):
       mtf = MTF(self.image_size)
-      return mtf.fit_transform(self.dataset)
+      self.mtf_data = mtf.fit_transform(self.dataset)
 
 
 

@@ -34,7 +34,7 @@ class reader(object):
       dataset = np.array(dataset)
       # This is specific to 50words
       data = dataset[:, 1:]
-      labels = dataset[:, 0, np.newaxis]
+      labels = dataset[:, 0]
       return (data, labels)
 
 
