@@ -67,10 +67,10 @@ class timeseries(object):
       self.test_mtf_data = np.empty((test_mtf_data.shape[0], self.GASF_image_size, self.GASF_image_size))
 
       for i in range(train_mtf_data.shape[0]):
-         self.train_mtf_data[i:, : ,:] = rescale(train_mtf_data[i, :, :], self.GASF_image_size / self.image_size , anti_aliasing=False)
+         self.train_mtf_data[i:, : ,:] = rescale(train_mtf_data[i, :, :], self.GASF_image_size / self.image_size)
 
       for i in range(test_mtf_data.shape[0]):
-         self.test_mtf_data[i:, : ,:] = rescale(test_mtf_data[i, :, :], self.GASF_image_size / self.image_size , anti_aliasing=False)
+         self.test_mtf_data[i:, : ,:] = rescale(test_mtf_data[i, :, :], self.GASF_image_size / self.image_size)
 
 
 
