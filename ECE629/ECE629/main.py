@@ -9,7 +9,6 @@ import numpy as np
 
 time_series = ts()
 
-# TODO: Pass dataset name as parameter
 time_series.readdataset('FaceAll')
 time_series.convert_to_GASF()
 time_series.convert_to_MTF()
@@ -22,28 +21,27 @@ test_x = np.append(test_x[:, :, :], time_series.test_mtf_data[:, :, :, np.newaxi
 
 batch_size = 32
 num_classes = time_series.no_classes
-epochs = 20
+epochs = 250
 
 # Using  network architecture similar to alexnet
 model = Sequential()
-model.add(Conv2D(32, (5, 5), padding='same', input_shape=test_x.shape[1:]))
+model.add(Conv2D(32, (8, 8), padding='same', input_shape=test_x.shape[1:]))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.25))
-
-model.add(Conv2D(16, (3, 3), padding='same'))
-model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPooling2D(pool_size=(3, 3)))
 model.add(Dropout(0.5))
 
-model.add(Conv2D(16, (3, 3), padding='same'))
+model.add(Conv2D(64, (3, 3), padding='same'))
 model.add(Activation('relu'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPooling2D(pool_size=(3, 3)))
 model.add(Dropout(0.5))
 
+model.add(Conv2D(128, (3, 3), padding='same'))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(3, 3)))
+model.add(Dropout(0.5))
 
 model.add(Flatten())
-model.add(Dense(256))
+model.add(Dense(512))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
 model.add(Dense(num_classes))
