@@ -8,23 +8,26 @@ class DataType(Enum):
 class reader(object):
    data_type = DataType.txt
    path = './'
-   filename = ''
+   train_filename = ''
+   test_filename = ''
 
-   def __init__(self, metadata, train=True):
+   def __init__(self, metadata):
       self.data_type = DataType[metadata['type']]
       self.path = metadata['path']
-      if(train):
-         self.filename = metadata['train_filename']
-      else:
-         self.filename = metadata['test_filename']
+      self.train_filename = metadata['train_filename']
+      self.test_filename = metadata['test_filename']
 
-   def read(self):
+   def read(self, train=True):
       if(self.data_type == DataType.txt):
-         return self.__read_txt()
+         return self.__read_txt(train)
       return
 
-   def __read_txt(self):
-      file = open(self.path + self.filename,"r") 
+   def __read_txt(self, train=True):
+      if(train):
+         file = open(self.path + self.train_filename,"r")
+      else:
+         file = open(self.path + self.test_filename,"r")
+
       data_as_string = file.readlines()
       dataset = []
       for line in data_as_string:
@@ -32,6 +35,7 @@ class reader(object):
          dataset.append(line_data)
 
       dataset = np.array(dataset)
+
       # This is specific to 50words
       data = dataset[:, 1:]
       labels = dataset[:, 0]

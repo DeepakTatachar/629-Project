@@ -10,27 +10,40 @@ import numpy as np
 time_series = ts()
 
 # TODO: Pass dataset name as parameter
-time_series.readdataset('50words')
+time_series.readdataset('FaceAll')
 time_series.convert_to_GASF()
+time_series.convert_to_MTF()
+
+train_x = time_series.train_gasf_data[:, :, :, np.newaxis]
+train_x = np.append(train_x[:, :, :], time_series.train_mtf_data[:, :, :, np.newaxis], axis = 3)
+
+test_x = time_series.test_gasf_data[:, :, :, np.newaxis]
+test_x = np.append(test_x[:, :, :], time_series.test_mtf_data[:, :, :, np.newaxis], axis = 3) 
 
 batch_size = 32
 num_classes = time_series.no_classes
-epochs = 100
+epochs = 20
 
 # Using  network architecture similar to alexnet
 model = Sequential()
-model.add(Conv2D(64, (5, 5), padding='same', input_shape=time_series.gasf_data.shape[1:] + (1,)))
+model.add(Conv2D(32, (5, 5), padding='same', input_shape=test_x.shape[1:]))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Dropout(0.25))
 
-model.add(Conv2D(64, (3, 3), padding='same'))
+model.add(Conv2D(16, (3, 3), padding='same'))
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.25))
+model.add(Dropout(0.5))
+
+model.add(Conv2D(16, (3, 3), padding='same'))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Dropout(0.5))
+
 
 model.add(Flatten())
-model.add(Dense(512))
+model.add(Dense(256))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
 model.add(Dense(num_classes))
@@ -43,10 +56,11 @@ model.compile(loss='categorical_crossentropy',
               optimizer=opt,
               metrics=['accuracy'])
 
-model.fit(time_series.gasf_data[:, :, :, np.newaxis], 
-          tf.keras.utils.to_categorical((time_series.lables - 1), num_classes=num_classes),
+model.fit(train_x, 
+          tf.keras.utils.to_categorical((time_series.train_lables - 1), num_classes=num_classes),
           batch_size=batch_size,
           epochs=epochs,
           shuffle=True)
 
-model.evaluate(x = time_series.gasf_data[:, :, :,np.newaxis], y = time_series.lables)
+score = model.evaluate(x = test_x, y = tf.keras.utils.to_categorical((time_series.test_lables - 1)))
+print(score)
