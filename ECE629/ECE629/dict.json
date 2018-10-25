@@ -1,10 +1,34 @@
 {
-  "50words": {
-    "path": "./datasets/50words/",
+  "Adiac": {
+    "path": "./datasets/Adiac/",
     "type": "txt",
-    "test_filename": "FiftyWords_TEST.txt",
-    "train_filename": "FiftyWords_TRAIN.txt",
-    "no_classes": "50"
+    "test_filename": "Adiac_TEST.txt",
+    "train_filename": "Adiac_TRAIN.txt",
+    "no_classes": "37"
+  },
+
+  "Beef": {
+    "path": "./datasets/Beef/",
+    "type": "txt",
+    "test_filename": "Beef_TEST.txt",
+    "train_filename": "Beef_TRAIN.txt",
+    "no_classes": "5"
+  },
+
+  "Coffee": {
+    "path": "./datasets/Coffee/",
+    "type": "txt",
+    "test_filename": "Coffee_TEST.txt",
+    "train_filename": "Coffee_TRAIN.txt",
+    "no_classes": "2"
+  },
+
+  "ECG200": {
+    "path": "./datasets/ECG200/",
+    "type": "txt",
+    "test_filename": "ECG200_TEST.txt",
+    "train_filename": "ECG200_TRAIN.txt",
+    "no_classes": "2"
   },
 
   "FaceAll": {
@@ -15,19 +39,59 @@
     "no_classes": "14"
   },
 
+  "FiftyWords": {
+    "path": "./datasets/FiftyWords/",
+    "type": "txt",
+    "test_filename": "FiftyWords_TEST.txt",
+    "train_filename": "FiftyWords_TRAIN.txt",
+    "no_classes": "50"
+  },
+
+  "Lightning2": {
+    "path": "./datasets/Lightning2/",
+    "type": "txt",
+    "test_filename": "Lightning2_TEST.txt",
+    "train_filename": "Lightning2_TRAIN.txt",
+    "no_classes": "2"
+  },
+
+  "Lightning7": {
+    "path": "./datasets/Lightning7/",
+    "type": "txt",
+    "test_filename": "Lightning7_TEST.txt",
+    "train_filename": "Lightning7_TRAIN.txt",
+    "no_classes": "7"
+  },
+
+  "OliveOil": {
+    "path": "./datasets/OliveOil/",
+    "type": "txt",
+    "test_filename": "OliveOil_TEST.txt",
+    "train_filename": "OliveOil_TRAIN.txt",
+    "no_classes": "4"
+  },
+
+  "OSULeaf": {
+    "path": "./datasets/OSULeaf/",
+    "type": "txt",
+    "test_filename": "OSULeaf_TEST.txt",
+    "train_filename": "OSULeaf_TRAIN.txt",
+    "no_classes": "6"
+  },
+
+  "SwedishLeaf": {
+    "path": "./datasets/SwedishLeaf/",
+    "type": "txt",
+    "test_filename": "SwedishLeaf_TEST.txt",
+    "train_filename": "SwedishLeaf_TRAIN.txt",
+    "no_classes": "15"
+  },
+
   "Yoga": {
     "path": "./datasets/Yoga/",
     "type": "txt",
     "test_filename": "Yoga_TEST.txt",
     "train_filename": "Yoga_TRAIN.txt",
     "no_classes": "2"
-  },
-
-  "Adiac": {
-    "path": "./datasets/Adiac/",
-    "type": "txt",
-    "test_filename": "Adiac_TEST.txt",
-    "train_filename": "Adiac_TRAIN.txt",
-    "no_classes": "37"
   }
 }

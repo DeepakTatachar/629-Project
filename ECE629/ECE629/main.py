@@ -7,9 +7,9 @@ from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 import numpy as np
 
-time_series = ts()
+time_series = ts(image_size=96)
 
-time_series.readdataset('FaceAll')
+time_series.readdataset('ECG200')
 time_series.convert_to_GASF()
 time_series.convert_to_MTF()
 
@@ -21,7 +21,7 @@ test_x = np.append(test_x[:, :, :], time_series.test_mtf_data[:, :, :, np.newaxi
 
 batch_size = 32
 num_classes = time_series.no_classes
-epochs = 250
+epochs = 2
 
 # Using  network architecture similar to alexnet
 model = Sequential()
