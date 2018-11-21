@@ -5,11 +5,12 @@ from keras.datasets import cifar10
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D
+from datetime import datetime
 import numpy as np
 
 time_series = ts(image_size=96)
 
-time_series.readdataset('ECG200')
+time_series.readdataset('Coffee')
 time_series.convert_to_GASF()
 time_series.convert_to_MTF()
 
@@ -21,7 +22,7 @@ test_x = np.append(test_x[:, :, :], time_series.test_mtf_data[:, :, :, np.newaxi
 
 batch_size = 32
 num_classes = time_series.no_classes
-epochs = 2
+epochs = 5
 
 # Using  network architecture similar to alexnet
 model = Sequential()
@@ -54,11 +55,15 @@ model.compile(loss='categorical_crossentropy',
               optimizer=opt,
               metrics=['accuracy'])
 
+startTime = datetime.now()
+
 model.fit(train_x, 
-          tf.keras.utils.to_categorical((time_series.train_lables - 1), num_classes=num_classes),
+          tf.keras.utils.to_categorical((time_series.train_lables), num_classes=num_classes),
           batch_size=batch_size,
           epochs=epochs,
           shuffle=True)
 
-score = model.evaluate(x = test_x, y = tf.keras.utils.to_categorical((time_series.test_lables - 1)))
+score = model.evaluate(x = test_x, y = tf.keras.utils.to_categorical((time_series.test_lables)))
+
+print(datetime.now() - startTime)
 print(score)

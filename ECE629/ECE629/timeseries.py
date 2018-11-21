@@ -42,16 +42,15 @@ class timeseries(object):
 
       # Read the json file to get the dictionary
       with open(self.dataset_to_loc_json) as data_file:
-         reader_dic = json.load(data_file)
+         parsedJSON = json.load(data_file)
 
-      dataset_metadata = reader_dic[dataset_name]
-      reader = rdr(dataset_metadata)
+      reader = rdr(parsedJSON, dataset_name)
 
       # Read the training data and the testing data
       [self.train_data, self.train_lables] = reader.read()
       [self.test_data, self.test_lables] = reader.read(train=False)
 
-      self.no_classes = int(dataset_metadata['no_classes'])
+      self.no_classes = int(parsedJSON[dataset_name]['no_classes'])
       self.image_size = math.floor(math.sqrt(self.train_data.shape[1:][0]))
 
    def convert_to_GASF(self):

@@ -93,5 +93,55 @@
     "test_filename": "Yoga_TEST.txt",
     "train_filename": "Yoga_TRAIN.txt",
     "no_classes": "2"
+  },
+
+  "AAL": {
+    "path": "./datasets/FinancialData/",
+    "type": "mat",
+    "test_filename": "AAL_TEST",
+    "train_filename": "AAL_TRAIN",
+    "test_labels": "AAL_TEST_LABELS",
+    "train_labels": "AAL_TRAIN_LABELS",   
+    "no_classes": "2"
+  },
+
+  "AAPL": {
+    "path": "./datasets/FinancialData/",
+    "type": "mat",
+    "test_filename": "AAPL_TEST",
+    "train_filename": "AAPL_TRAIN",
+    "test_labels": "AAPL_TEST_LABELS",
+    "train_labels": "AAPL_TRAIN_LABELS",   
+    "no_classes": "2"
+  },
+
+  "AMZN": {
+    "path": "./datasets/FinancialData/",
+    "type": "mat",
+    "test_filename": "AMZN_TEST",
+    "train_filename": "AMZN_TRAIN",
+    "test_labels": "AMZN_TEST_LABELS",
+    "train_labels": "AMZN_TRAIN_LABELS",   
+    "no_classes": "2"
+  },
+
+  "EA": {
+    "path": "./datasets/FinancialData/",
+    "type": "mat",
+    "test_filename": "EA_TEST",
+    "train_filename": "EA_TRAIN",
+    "test_labels": "EA_TEST_LABELS",
+    "train_labels": "EA_TRAIN_LABELS",   
+    "no_classes": "2"
+  },
+
+  "TSLA": {
+    "path": "./datasets/FinancialData/",
+    "type": "mat",
+    "test_filename": "TSLA_TEST",
+    "train_filename": "TSLA_TRAIN",
+    "test_labels": "TSLA_TEST_LABELS",
+    "train_labels": "TSLA_TRAIN_LABELS",   
+    "no_classes": "2"
   }
 }
