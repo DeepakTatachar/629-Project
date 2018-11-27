@@ -1,7 +1,9 @@
-# ECE 629 Project Fall 2018
----------------------------
+# Intro to Neural Nets Project Fall 2018
+
 **Author: Deepak Ravikumar**\
-**Purdue University**
+**Purdue University, ECE 62900**
+
+## Increasing dimensionality of time series data using Gramian Angular Fields and Markov Transition Fields to perform classification using CNN’s
 
 Request: Please use this code in a fair manner.
 
