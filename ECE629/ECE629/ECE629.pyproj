@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d79af3d5-d0af-4f14-a5c7-f52c0ff13dea</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>main.py</StartupFile>
+    <StartupFile>oneDim.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="oneDim.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="timeseries.py">
       <SubType>Code</SubType>
     </Compile>
